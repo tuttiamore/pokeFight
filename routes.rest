@@ -1,0 +1,7 @@
+GET http://localhost:3001/pokemon/
+
+###
+GET http://localhost:3001/pokemon/search/pikachu
+
+###
+GET http://localhost:3001/pokemon/details/3 
