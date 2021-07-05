@@ -6,7 +6,7 @@ const cors = require("cors");
 
 const indexRouter = require("./routes/index");
 const pokemonsRouter = require("./routes/pokemons");
-const { loadPokemonData } = require("./utils/loadPokemonData");
+const loadPokemonData = require("./utils/loadPokemonData");
 
 const app = express();
 

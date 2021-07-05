@@ -1,6 +1,6 @@
-exports.checkInfoParams = (req, res, next) => {
+const checkInfoParams = (req, res, next) => {
   const { info } = req.params;
-  const { pokemon } = req;
+  const pokemon = req.pokemon[0];
 
   const validInfoParams = ["name", "type", "base"];
 
@@ -10,3 +10,5 @@ exports.checkInfoParams = (req, res, next) => {
   req.pokemonInfo = pokemon[info];
   next();
 };
+
+module.exports = checkInfoParams;

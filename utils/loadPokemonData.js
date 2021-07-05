@@ -1,6 +1,8 @@
 const mockData = require("../db/mockData.json");
 
-exports.loadPokemonData = (req, res, next) => {
+const loadPokemonData = (req, res, next) => {
   req.pokemons = mockData;
   next();
 };
+
+module.exports = loadPokemonData;

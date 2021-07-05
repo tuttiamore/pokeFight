@@ -1,10 +1,9 @@
-const mockData = require("../db/mockData.json");
-
-const checkPokemonExists = (req, res, next) => {
-  const { id } = req.params;
+const filterPokemons = (req, res, next) => {
   const { pokemons } = req;
+  const { name } = req.params;
+
   const pokemonsFiltered = pokemons.filter(
-    (pokemon) => pokemon.id === Number(id)
+    (pokemon) => pokemon.name.english.toLowerCase() === name.toLowerCase()
   );
 
   if (!pokemonsFiltered.length) {
@@ -15,4 +14,4 @@ const checkPokemonExists = (req, res, next) => {
   next();
 };
 
-module.exports = checkPokemonExists;
+module.exports = filterPokemons;
