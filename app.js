@@ -1,12 +1,15 @@
+require("dotenv").config();
+require("./db/client.js");
+
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
 
-const indexRouter = require("./routes/index");
 const pokemonsRouter = require("./routes/pokemons");
 const loadPokemonData = require("./utils/loadPokemonData");
+const leaderboardRouter = require("./routes/leaderboard");
 
 const app = express();
 
@@ -18,7 +21,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(loadPokemonData);
 
-app.use("/", indexRouter);
 app.use("/pokemon", pokemonsRouter);
+app.use("/leaderboard", leaderboardRouter);
 
 module.exports = app;

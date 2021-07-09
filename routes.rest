@@ -5,3 +5,13 @@ GET http://localhost:3001/pokemon/search/pikachu
 
 ###
 GET http://localhost:3001/pokemon/details/3 
+
+###
+POST http://localhost:3001/leaderboard/postresult
+content-type: application/json
+
+{
+    "id": 1,
+    "opponentId": 2,
+    "win": 1
+}
