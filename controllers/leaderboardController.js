@@ -44,7 +44,10 @@ const postFightResults = async (req, res) => {
 // Get fight results
 const getLeaderboard = async (req, res) => {
   try {
-    const results = await Leaderboard.find({}, null, { sort: "win", limit: 2 });
+    const results = await Leaderboard.find({}, null, {
+      sort: "-win",
+      limit: 2,
+    });
     if (!results) {
       return res.send("No data yet");
     }
