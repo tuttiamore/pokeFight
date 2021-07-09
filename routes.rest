@@ -12,7 +12,7 @@ content-type: application/json
 
 {
     "id": 67,
-    "opponentId": 34,
+    "opponentId": 34
 }
 
 ###
