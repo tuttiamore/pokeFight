@@ -11,7 +11,9 @@ POST http://localhost:3001/leaderboard/postresult
 content-type: application/json
 
 {
-    "id": 1,
-    "opponentId": 2,
-    "win": 1
+    "id": 67,
+    "opponentId": 34,
 }
+
+###
+GET http://localhost:3001/leaderboard/getresults

@@ -1,6 +1,7 @@
-const PokemonResults = require("../models/PokemonResults");
+const Leaderboard = require("../models/leaderboardModel");
 
-const createPokemonResults = async (req, res) => {
+// POST fight results
+const postFightResults = async (req, res) => {
   const { id, opponentId, win } = req.body;
   const { pokemons } = req;
   let pokemon;
@@ -11,8 +12,8 @@ const createPokemonResults = async (req, res) => {
     .name.english;
 
   try {
-    pokemon = await PokemonResults.findOne({ id: id });
-
+    pokemon = await Leaderboard.findOne({ id: id });
+    console.log(pokemon);
     // update if pokemon exists
     if (pokemon) {
       pokemon.win++;
@@ -24,12 +25,12 @@ const createPokemonResults = async (req, res) => {
       return res.send(pokemonUpdated);
     }
 
-    pokemon = new PokemonResults({
+    pokemon = new Leaderboard({
       id,
       name: pokemonName,
       opponents: [opponentName],
       opponentsId: [opponentId],
-      win,
+      win: 1,
       total: 1,
     });
     const pokemonCreated = await pokemon.save();
@@ -40,4 +41,18 @@ const createPokemonResults = async (req, res) => {
   }
 };
 
-module.exports = { createPokemonResults };
+// Get fight results
+const getLeaderboard = async (req, res) => {
+  try {
+    const results = await Leaderboard.find({}, null, { sort: "win", limit: 2 });
+    if (!results) {
+      return res.send("No data yet");
+    }
+    res.send(results);
+  } catch (e) {
+    console.log(e);
+    res.status(500).send(e.message);
+  }
+};
+
+module.exports = { postFightResults, getLeaderboard };

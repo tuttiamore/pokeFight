@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const PokemonResults = new Schema({
-  id: { type: Number },
-  name: { type: String },
+const Leaderboard = new Schema({
+  id: { type: Number, required: true },
+  name: { type: String, required: true },
   opponents: [{ type: String, required: true }],
   opponentsId: [{ type: Number }],
   win: { type: Number, required: true },
@@ -16,4 +16,4 @@ const PokemonResults = new Schema({
   total: { type: Number },
 });
 
-module.exports = mongoose.model("PokemonResults", PokemonResults);
+module.exports = mongoose.model("Leaderboard", Leaderboard);

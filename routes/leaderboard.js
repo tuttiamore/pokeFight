@@ -2,9 +2,11 @@ const express = require("express");
 const router = express.Router();
 
 const {
-  createPokemonResults,
+  postFightResults,
+  getLeaderboard,
 } = require("../controllers/leaderboardController");
 
-router.post("/postresult", createPokemonResults);
+router.post("/postresult", postFightResults);
+router.get("/getresults", getLeaderboard);
 
 module.exports = router;
