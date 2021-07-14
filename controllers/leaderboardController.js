@@ -2,7 +2,7 @@ const Leaderboard = require("../models/leaderboardModel");
 
 // POST fight results
 const postFightResults = async (req, res) => {
-  const { id, opponentId, win } = req.body;
+  const { id, opponentId } = req.body;
   const { pokemons } = req;
   let pokemon;
 
@@ -46,7 +46,7 @@ const getLeaderboard = async (req, res) => {
   try {
     const results = await Leaderboard.find({}, null, {
       sort: "-win",
-      limit: 2,
+      limit: 20,
     });
     if (!results) {
       return res.send("No data yet");
